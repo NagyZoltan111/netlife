@@ -14,7 +14,7 @@
             margin-right: 600px;
             margin-left: 600px;
 
-            color: peachpuff;
+           color: rgb(168, 143, 121);
         }
 
 
