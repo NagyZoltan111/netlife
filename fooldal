@@ -3,23 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Netlife</title>
-
     <style>
         body {
             background-image: linear-gradient(to bottom right, rgb(6, 123, 128), rgb(4, 62, 65));
             margin-top: 20px;
             margin-right: 600px;
             margin-left: 600px;
-
-           color: rgb(168, 143, 121);
+            color: rgb(168, 143, 121);
         }
 
-
         h2,
-        h1 {
+        h1{
             font-size: 70px;
             text-decoration: underline;
             text-align: center;
@@ -43,7 +39,6 @@
             color: black;
             font-size: 40px;
         }
-      
 
         .masdik {
             position: absolute;
@@ -57,20 +52,57 @@
             color: black;
             font-size: 40px;
         }
+
+        .kepernyoido {
+            position: absolute;
+            top: 600px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-image: linear-gradient(to right, whitesmoke, rgb(172, 115, 126));
+            width: auto;
+            height: auto;
+            border: 3px solid black;
+            color: black;
+            font-size: 50px;
+            text-decoration: underline;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .kepernyoido input {
+            width: 80%;
+            padding: 10px;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .kepernyoido button {
+            padding: 10px 20px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .valasz {
+            border: 1px solid black;
+            background-color: black;
+            color:deeppink;
+            margin-top: 20px;
+            font-size: 20px;
+        }
     </style>
 </head>
-
 
 <body>
     <header>
         <h1>Netlife</h1>
         <p id="in">Általános intertes tippek</p>
     </header>
-    
+
     <div class="elso">
         <p>
             Égészségügyi tippek számítógéphez
-        </p><table>
+        </p>
+        <table>
             <ul>
                 <li>info1</li>
                 <li>info1</li>
@@ -79,13 +111,13 @@
                 <li>info1</li>
             </ul>
         </table>
-
     </div>
 
     <div class="masdik">
         <p>
             Égészségügyi tippek mobiltelefonhoz
-        </p><table>
+        </p>
+        <table>
             <ul>
                 <li>info1</li>
                 <li>info1</li>
@@ -94,14 +126,37 @@
                 <li>info1</li>
             </ul>
         </table>
-
     </div>
 
+    <div class="kepernyoido">
+        <h3>Heti képernyőhasználat <sub>Órákban</sub></h3>
+        <input type="number" id="screenUsage" placeholder="Órákban">
+        <button onclick="submitScreenUsage()">Küldés</button>
+        <div class="valasz" id="valasz"></div>
+    </div>
 
-
+    <script>
+        function submitScreenUsage() {
+            const screenUsage = document.getElementById('screenUsage').value;
+            const responseDiv = document.getElementById('valasz');
+    
+            if (screenUsage === "") {
+                responseDiv.innerHTML = "Kérjük, adja meg a képernyőhasználatot!";
+            } else {
+                const usageHours = parseInt(screenUsage);
+                let responseMessage;
+    
+                if (usageHours < 10) {
+                    responseMessage = "Jó munkát végez! Az időd jól van beosztva.";
+                } else if (usageHours >= 10 && usageHours <= 20) {
+                    responseMessage = "Kicsit sok a képernyőidő. Próbálj meg szünetet tartani.";
+                } else {
+                    responseMessage = "Figyelem! Túl sok időt töltesz a képernyő előtt. Fontos a pihenés!";
+                }
+    
+                responseDiv.innerHTML = responseMessage;
+            }
+        }
+    </script>
 </body>
-<footer>
-
-</footer>
-
-</html>
+</html>  
