@@ -1,18 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Page Title</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netlife</title>
+
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right, rgb(6, 123, 128), rgb(4, 62, 65));
+            margin-top: 20px;
+            margin-right: 600px;
+            margin-left: 600px;
+
+            color: peachpuff;
+        }
+
+
+        h2,
+        h1 {
+            font-size: 70px;
+            text-decoration: underline;
+            text-align: center;
+        }
+
+        #in {
+            font-size: 33px;
+            text-align: right;
+            text-decoration: underline;
+        }
+
+        .elso {
+            position: absolute;
+            right: 0px;
+            background-image: linear-gradient(to right, whitesmoke, rgb(172, 115, 126));
+            width: 500px;
+            height: 500px;
+            border: 3px;
+            padding: 10px;
+            border: 3px solid black;
+            color: black;
+            font-size: 40px;
+        }
+      
+
+        .masdik {
+            position: absolute;
+            left: 0px;
+            background-image: linear-gradient(to right, whitesmoke, rgb(116, 177, 116));
+            width: 500px;
+            height: 500px;
+            border: 3px;
+            padding: 10px;
+            border: 3px solid black;
+            color: black;
+            font-size: 40px;
+        }
+    </style>
 </head>
+
+
 <body>
-  <h1>Üdvözöljük a  NetLife Weboldalán</h1>
-  <p>Ennek a weboldalnak a fő célja a sok képernyőidő veszélyeinek illetve kellemetlen mellékhatásainak a bemutatása <br> és lehetséges képernyőidő csökkentésére való tippek megadása</p>
+    <header>
+        <h1>Netlife</h1>
+        <p id="in">Általános intertes tippek</p>
+    </header>
+    
+    <div class="elso">
+        <p>
+            Égészségügyi tippek számítógéphez
+        </p><table>
+            <ul>
+                <li>info1</li>
+                <li>info1</li>
+                <li>infi 2</li>
+                <li>ijnfö3</li>
+                <li>info1</li>
+            </ul>
+        </table>
+
+    </div>
+
+    <div class="masdik">
+        <p>
+            Égészségügyi tippek mobiltelefonhoz
+        </p><table>
+            <ul>
+                <li>info1</li>
+                <li>info1</li>
+                <li>infi 2</li>
+                <li>ijnfö3</li>
+                <li>info1</li>
+            </ul>
+        </table>
+
+    </div>
+
+
+
 </body>
+<footer>
+
+</footer>
+
 </html>
