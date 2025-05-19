@@ -129,7 +129,7 @@
     </div>
 
     <div class="kepernyoido">
-        <h3>Heti képernyőhasználat <sub>Órákban</sub></h3>
+        <h3>Heti képernyőhasználat(Órákban)</h3>
         <input type="number" id="screenUsage" placeholder="Órákban">
         <button onclick="submitScreenUsage()">Küldés</button>
         <div class="valasz" id="valasz"></div>
