@@ -1,1 +1,228 @@
-test
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netlife</title>
+  <style>
+    body {
+      background-image: linear-gradient(to bottom right, rgb(6, 102, 105), rgb(36, 65, 94));
+      margin: 20px 600px;
+      color: rgb(168, 143, 121);
+    }
+
+    h1,
+    h2 {
+      font-size: 70px;
+      text-decoration: underline;
+      text-align: center;
+    }
+
+    #in {
+      font-size: 33px;
+      text-align: right;
+      text-decoration: underline;
+    }
+
+    .elso,
+    .masdik {
+      position: absolute;
+      width: 500px;
+      height: auto;
+      padding: 10px;
+      border: 3px solid black;
+      color: black;
+      font-size: 40px;
+      background-image: linear-gradient(to right, whitesmoke, rgb(172, 115, 126));
+    }
+
+    .masdik {
+      left: 0px;
+      background-image: linear-gradient(to right, whitesmoke, rgb(116, 177, 116));
+    }
+
+    .elso {
+      right: 0px;
+    }
+
+    .kepernyoido {
+      position: absolute;
+      top: 600px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-image: linear-gradient(to right, whitesmoke, rgb(172, 115, 126));
+      border: 3px solid black;
+      color: black;
+      font-size: 30px;
+      text-decoration: underline;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .kepernyoido input {
+      width: 80%;
+      padding: 10px;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .kepernyoido button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 5px;
+      border: none;
+      color: white;
+      background-image: linear-gradient(to right, #1e3c72, #2a5298);
+    }
+
+    .valasz {
+      border: 1px solid black;
+      background-color: black;
+      color: deeppink;
+      margin-top: 20px;
+      font-size: 20px;
+      padding: 10px;
+    }
+
+    .lang-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 id="title">Netlife</h1>
+    <p id="in">Általános internetes tippek</p>
+    <div class="lang-buttons">
+      <button onclick="setLanguage('hu')">Magyar</button>
+      <button onclick="setLanguage('en')">English</button>
+    </div>
+  </header>
+
+  <div class="elso">
+    <p id="mobileTitle">Egészségügyi tippek mobiltelefonhoz</p>
+    <ul id="mobileTips">
+      <li>Helyes testtartás</li>
+      <li>Ügyelj arra, hogy ne tölts túl sok időt a képernyő előtt</li>
+      <li>Ne tartsd túl közel a szemedhez</li>
+      <li>Állítsd be a fényerőt megfelelően</li>
+      <li>Használj kékfény szűrőt</li>
+    </ul>
+  </div>
+
+  <div class="masdik">
+    <p id="computerTitle">Egészségügyi tippek számítógéphez</p>
+    <ul id="computerTips">
+      <li>Helyes testtartás</li>
+      <li>Ne tölts túl sok időt a képernyő előtt</li>
+      <li>A monitor felső része legyen szemmagasságban</li>
+      <li>Pihentesd a kezed, amikor nem használod</li>
+      <li>Rendszeres, rövid szünetek tartása</li>
+    </ul>
+  </div>
+
+  <div class="kepernyoido">
+    <h3 id="usageTitle">Heti képernyőhasználat (órákban)</h3>
+    <input type="number" id="screenUsage" placeholder="Órákban / Hours" />
+    <button id="submitBtn" onclick="submitScreenUsage()">Küldés</button>
+    <div class="valasz" id="valasz"></div>
+  </div>
+
+  <script>
+    let currentLang = 'hu';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+
+      document.getElementById('title').innerText = "Netlife";
+      document.getElementById('in').innerText =
+        lang === 'en' ? "General internet tips" : "Általános internetes tippek";
+
+      document.getElementById('mobileTitle').innerText =
+        lang === 'en' ? "Health tips for mobile phone usage" : "Egészségügyi tippek mobiltelefonhoz";
+
+      document.getElementById('computerTitle').innerText =
+        lang === 'en' ? "Health tips for computer usage" : "Egészségügyi tippek számítógéphez";
+
+      document.getElementById('usageTitle').innerText =
+        lang === 'en' ? "Weekly screen time (in hours)" : "Heti képernyőhasználat (órákban)";
+
+      document.getElementById('submitBtn').innerText =
+        lang === 'en' ? "Submit" : "Küldés";
+
+      document.getElementById('mobileTips').innerHTML =
+        lang === 'en'
+          ? `<li>Maintain good posture</li>
+             <li>Limit your screen time</li>
+             <li>Don’t hold the phone too close to your eyes</li>
+             <li>Adjust screen brightness appropriately</li>
+             <li>Use a blue light filter</li>`
+          : `<li>Helyes testtartás</li>
+             <li>Ügyelj arra, hogy ne tölts túl sok időt a képernyő előtt</li>
+             <li>Ne tartsd túl közel a szemedhez</li>
+             <li>Állítsd be a fényerőt megfelelően</li>
+             <li>Használj kékfény szűrőt</li>`;
+
+      document.getElementById('computerTips').innerHTML =
+        lang === 'en'
+          ? `<li>Maintain good posture</li>
+             <li>Don't spend too much time in front of the screen</li>
+             <li>The top of your monitor should be at eye level</li>
+             <li>Rest your hands when not using the mouse or keyboard</li>
+             <li>Take regular short breaks</li>`
+          : `<li>Helyes testtartás</li>
+             <li>Ne tölts túl sok időt a képernyő előtt</li>
+             <li>A monitor felső része legyen szemmagasságban</li>
+             <li>Pihentesd a kezed, amikor nem használod</li>
+             <li>Rendszeres, rövid szünetek tartása</li>`;
+    }
+  
+
+    function submitScreenUsage() {
+      const screenUsage = document.getElementById("screenUsage").value;
+      const responseDiv = document.getElementById("valasz");
+
+      if (screenUsage === "") {
+        responseDiv.innerHTML =
+          currentLang === "en"
+            ? "Please enter your weekly screen time!"
+            : "Kérjük, adja meg a képernyőhasználatot!";
+      } else {
+        const usageHours = parseInt(screenUsage);
+        let responseMessage;
+
+        if (usageHours < 10) {
+          responseMessage =
+            currentLang === "en"
+              ? "Great job! You're managing your time well. 👍<br>✅ Keep up healthy screen habits.<br>✅ Stretch every hour."
+              : "Jó munkát végeztél! Jól osztod be az idődet. 👍<br>✅ Tartsd meg az egészséges képernyőszokásokat.<br>✅ Nyújtózz óránként.";
+        } else if (usageHours >= 10 && usageHours <= 20) {
+          responseMessage =
+            currentLang === "en"
+              ? "A bit too much screen time. ⏳<br>✅ Try taking breaks every 30 minutes.<br>✅ Consider screen-free hobbies."
+              : "Kicsit sok a képernyőidő. ⏳<br>✅ Próbálj 30 percenként szünetet tartani.<br>✅ Keress képernyőmentes hobbikat.";
+              
+        }
+     
+         else {
+          responseMessage =
+            currentLang === "en"
+              ? "Warning! Too much screen time. ⚠️<br>❗ Reduce digital usage.<br>❗ Go outside and rest your eyes."
+              : "Figyelem! Túl sok időt töltesz a képernyő előtt. ⚠️<br>❗ Csökkentsd a digitális időt.<br>❗ Menj ki a szabadba, pihentesd a szemed.";
+        }
+
+        responseDiv.innerHTML = responseMessage;
+      }
+    }
+   
+
+
+
+  </script>
+</body>
+
+</html>
