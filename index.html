@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        
+        /* Reset and Basic Styling */
         * {
             margin: 0;
             padding: 0;
@@ -29,14 +29,14 @@
             padding: 20px;
         }
 
-       
+        /* Header Styling */
         .site-header { 
-            background: linear-gradient(135deg, #4A90E2 0%, #2C6DAA 100%); 
+            background-image: linear-gradient(135deg, #4A90E2 0%, #2C6DAA 100%); 
             color: white;
             padding: 40px 20px;
             text-align: center;
             margin-bottom: 30px;
-            border-bottom: 5px solid black;
+            border-bottom: 5px solid black; 
         }
 
         .site-header h1 {
@@ -59,9 +59,9 @@
         }
 
         .lang-button { 
-            background-color: linear-gradient(315deg, #4A90E2 0%, #2C6DAA 100%);
+            background-image: linear-gradient(315deg, #4A90E2 0%, #2C6DAA 100%); /* Corrected: background-image */
             border: 2px solid white;
-            color: darkblue;
+            color: white; /* Changed to white for better contrast on gradient */
             padding: 10px 20px;
             text-align: center;
             text-decoration: none;
@@ -71,20 +71,21 @@
             cursor: pointer;
             border-radius: 25px; 
             font-family: 'Montserrat', sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.3s, background-image 0.3s;
         }
 
         .lang-button:hover, .lang-button.active {
+            background-image: none; /* Remove gradient on active/hover */
             background-color: white;
             color: #4A90E2;
         }
 
-       
+        /* Main Content Area */
         .content-sections {
             display: flex;
             flex-wrap: wrap; 
             gap: 30px; 
-            justify-content: center;
+            justify-content: center; 
             margin-bottom: 30px;
         }
 
@@ -95,19 +96,21 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             flex: 1; 
             min-width: 280px; 
+            display: flex; /* Added for internal flex structuring */
+            flex-direction: column; /* Ensure children stack vertically */
         }
 
         .content-box h2 {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.8em;
-            color: #4A90E2; /* Accent color for headings */
+            color: #4A90E2;
             margin-bottom: 15px;
             border-bottom: 2px solid #eee;
             padding-bottom: 10px;
         }
 
         .content-box ul {
-            list-style-type: none; /* Remove default bullets */
+            list-style-type: none;
             padding-left: 0;
         }
 
@@ -116,25 +119,73 @@
             padding-left: 20px;
             position: relative;
         }
-        .content-box ul li::before { /* Custom bullet */
-            content: '✓'; /* Checkmark or other icon */
-            color: #4A90E2; /* Accent color */
+        .content-box ul li::before {
+            content: '✓'; 
+            color: #4A90E2; 
             position: absolute;
             left: 0;
             font-weight: bold;
         }
 
+        /* Interactive Content Box Styling */
+        .interactive-box-header {
+            margin-bottom: 20px;
+        }
+        .interactive-box-header h2 { /* Already styled by .content-box h2 */
+            margin-bottom: 10px; /* Adjust spacing if needed */
+        }
+
+        .switcher-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .switcher-button {
+            flex-grow: 1; /* Make buttons take equal space */
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            color: #555;
+            padding: 10px 15px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9em;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .switcher-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .switcher-button.active {
+            background-color: #4A90E2;
+            color: white;
+            border-color: #4A90E2;
+        }
+
+        .info-content-panel {
+            display: none; /* Hidden by default */
+        }
+
+        .info-content-panel.active {
+            display: block; /* Shown when active */
+        }
+
 
         /* Screen Time Section */
-        .screentime-section { /* Replaces .kepernyoido */
+        .screentime-section {
             background-color: white;
             border-radius: 8px;
             padding: 30px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 100%; /* Take full width in its container */
-            max-width: 600px; /* Max width for this specific section */
-            margin: 30px auto; /* Center it */
+            width: 100%; 
+            max-width: 600px; 
+            margin: 30px auto; 
         }
 
         .screentime-section h3 {
@@ -145,7 +196,7 @@
         }
 
         .screentime-section input[type="number"] {
-            width: calc(100% - 24px); /* Adjust for padding */
+            width: calc(100% - 24px); 
             max-width: 300px;
             padding: 12px;
             font-size: 1em;
@@ -158,7 +209,7 @@
         }
 
         .screentime-section button {
-            background-color: #50E3C2; /* Mint/Teal accent */
+            background-color: #50E3C2; 
             border: none;
             color: white;
             padding: 12px 25px;
@@ -174,28 +225,27 @@
         }
 
         .screentime-section button:hover {
-            background-color: #40C0A0; /* Darker shade on hover */
+            background-color: #40C0A0; 
         }
 
-        .response-message { /* Replaces .valasz */
-            background-color: #e9eff1; /* Light, neutral background */
-            color: #333; /* Default text color */
+        .response-message { 
+            background-color: #e9eff1; 
+            color: #333; 
             margin-top: 20px;
             font-size: 1em;
             padding: 15px;
             border-radius: 5px;
-            border-left: 5px solid #4A90E2; /* Accent border for info */
+            border-left: 5px solid #4A90E2; 
             text-align: left;
         }
-        /* Conditional styling for response types (can be added via JS) */
         .response-message.success {
-            border-left-color: #50E3C2; /* Greenish for success */
+            border-left-color: #50E3C2; 
         }
         .response-message.warning {
-            border-left-color: #f7b731; /* Yellow for warning */
+            border-left-color: #f7b731; 
         }
         .response-message.error {
-            border-left-color: #e74c3c; /* Red for error/strong warning */
+            border-left-color: #e74c3c; 
         }
 
         /* Responsive adjustments */
@@ -207,10 +257,13 @@
                 font-size: 1.2em;
             }
             .content-sections {
-                flex-direction: column; /* Stack boxes vertically */
+                flex-direction: column; 
             }
             .content-box {
-                max-width: 100%; /* Full width on small screens */
+                max-width: 100%; 
+            }
+            .switcher-buttons {
+                flex-direction: column; /* Stack switcher buttons on small screens */
             }
         }
 
@@ -222,8 +275,8 @@
             <h1>Netlife</h1>
             <p class="subtitle" id="in">Általános internetes tippek</p>
             <div class="lang-buttons-container">
-                <button class="lang-button" onclick="setLanguage('hu'); setActiveButton(this);">Magyar</button>
-                <button class="lang-button" onclick="setLanguage('en'); setActiveButton(this);">English</button>
+                <button class="lang-button" onclick="setLanguage('hu'); setActiveLangButton(this);">Magyar</button>
+                <button class="lang-button" onclick="setLanguage('en'); setActiveLangButton(this);">English</button>
             </div>
         </div>
     </header>
@@ -233,23 +286,35 @@
             <section class="content-box">
                 <h2 id="mobileTitle">Egészségügyi tippek mobiltelefonhoz</h2>
                 <ul id="mobileTips">
-                    <li>Helyes testtartás</li>
-                    <li>Ügyelj arra, hogy ne tölts túl sok időt a képernyő előtt</li>
-                    <li>Ne tartsd túl közel a szemedhez</li>
-                    <li>Állítsd be a fényerőt megfelelően</li>
-                    <li>Használj kékfény szűrőt</li>
+                    {/* Placeholder, JS will populate */}
                 </ul>
             </section>
 
             <section class="content-box">
                 <h2 id="computerTitle">Egészségügyi tippek számítógéphez</h2>
                 <ul id="computerTips">
-                    <li>Helyes testtartás</li>
-                    <li>Ne tölts túl sok időt a képernyő előtt</li>
-                    <li>A monitor felső része legyen szemmagasságban</li>
-                    <li>Pihentesd a kezed, amikor nem használod</li>
-                    <li>Rendszeres, rövid szünetek tartása</li>
+                    {/* Placeholder, JS will populate */}
                 </ul>
+            </section>
+
+            <section class="content-box interactive-box">
+                <div class="interactive-box-header">
+                    <h2 id="interactiveContentTitle">{/* Title set by JS */}</h2>
+                    <div class="switcher-buttons">
+                        <button id="mentalHealthSwitchBtn" class="switcher-button" onclick="switchInfoContent('mentalHealth', this)">Mental Wellness</button>
+                        <button id="aiDetectionSwitchBtn" class="switcher-button" onclick="switchInfoContent('aiDetection', this)">AI Fakes</button>
+                    </div>
+                </div>
+                <div id="mentalHealthContent" class="info-content-panel">
+                    <ul id="mentalHealthTipsList">
+                        {/* Placeholder, JS will populate */}
+                    </ul>
+                </div>
+                <div id="aiDetectionContent" class="info-content-panel">
+                    <ul id="aiDetectionTipsList">
+                        {/* Placeholder, JS will populate */}
+                    </ul>
+                </div>
             </section>
         </div>
 
@@ -257,125 +322,220 @@
             <h3 id="usageTitle">Heti képernyőhasználat (órákban)</h3>
             <input type="number" id="screenUsage" placeholder="Órákban / Hours" />
             <button id="submitBtn" onclick="submitScreenUsage()">Küldés</button>
-            <div class="response-message" id="valasz" style="display: none;"></div> </section>
+            <div class="response-message" id="valasz" style="display: none;"></div> 
+        </section>
     </main>
 
     <script>
-        let currentLang = 'hu'; // Default language
+        let currentLang = 'hu'; 
+        let currentInfoContentType = 'mentalHealth'; // To track active tab in the new box
 
-        // Function to set active button (visual feedback)
-        function setActiveButton(activeBtn) {
-            const buttons = document.querySelectorAll('.lang-button');
-            buttons.forEach(button => button.classList.remove('active'));
+        // Translations object
+        const translations = {
+            hu: {
+                generalTips: "Általános internetes tippek",
+                mobileHealthTitle: "Egészségügyi tippek mobiltelefonhoz",
+                mobileTips: [
+                    "Helyes testtartás",
+                    "Ügyelj arra, hogy ne tölts túl sok időt a képernyő előtt",
+                    "Ne tartsd túl közel a szemedhez",
+                    "Állítsd be a fényerőt megfelelően",
+                    "Használj kékfény szűrőt"
+                ],
+                computerHealthTitle: "Egészségügyi tippek számítógéphez",
+                computerTips: [
+                    "Helyes testtartás",
+                    "Ne tölts túl sok időt a képernyő előtt",
+                    "A monitor felső része legyen szemmagasságban",
+                    "Pihentesd a kezed, amikor nem használod",
+                    "Rendszeres, rövid szünetek tartása"
+                ],
+                screenUsageTitle: "Heti képernyőhasználat (órákban)",
+                submitButton: "Küldés",
+                inputPlaceholder: "Órákban",
+                emptyInputWarning: "Kérjük, adja meg a képernyőhasználatot!",
+                negativeInputError: "A képernyőidő nem lehet negatív. Kérjük, adjon meg érvényes számot.",
+                greatJobScreenTime: "<strong>Jó munkát végeztél!</strong> Jól osztod be az idődet. 👍<br>✅ Tartsd meg az egészséges képernyőszokásokat.<br>✅ Nyújtózz óránként.",
+                bitTooMuchScreenTime: "<strong>Kicsit sok a képernyőidő.</strong> ⏳<br>✅ Próbálj 30 percenként szünetet tartani.<br>✅ Keress képernyőmentes hobbikat.",
+                warningTooMuchScreenTime: "<strong>Figyelem! Túl sok időt töltesz a képernyő előtt.</strong> ⚠️<br>❗ Csökkentsd a digitális időt.<br>❗ Menj ki a szabadba, pihentesd a szemed.",
+                mentalWellnessSwitch: "Mentális Jólét",
+                aiFakesSwitch: "MI Hamisítványok",
+                mentalWellnessTitle: "Mentális Jólét Online",
+                mentalHealthTips: [
+                    "Korlátozd a közösségi média használatát",
+                    "Válogasd meg, mit követsz",
+                    "Tarts digitális detox szüneteket",
+                    "Építs valódi kapcsolatokat online és offline",
+                    "Légy tudatában az online zaklatásnak és jelentsd"
+                ],
+                aiDetectionTitle: "MI Hamisítványok Felismerése",
+                aiDetectionTips: [
+                    "Keress természetellenes részleteket (pl. kezek, szemek, fogak)",
+                    "Ellenőrizd a fényeket, árnyékokat és tükröződéseket",
+                    "Használj fordított képkeresőt (pl. Google Images)",
+                    "Vizsgáld meg a forrást és a szerző hitelességét",
+                    "Figyelj a túlságosan sima vagy viaszos bőrre, furcsa textúrákra"
+                ]
+            },
+            en: {
+                generalTips: "General internet tips",
+                mobileHealthTitle: "Health tips for mobile phone usage",
+                mobileTips: [
+                    "Maintain good posture",
+                    "Limit your screen time",
+                    "Don’t hold the phone too close to your eyes",
+                    "Adjust screen brightness appropriately",
+                    "Use a blue light filter"
+                ],
+                computerHealthTitle: "Health tips for computer usage",
+                computerTips: [
+                    "Maintain good posture",
+                    "Don't spend too much time in front of the screen",
+                    "The top of your monitor should be at eye level",
+                    "Rest your hands when not using the mouse or keyboard",
+                    "Take regular short breaks"
+                ],
+                screenUsageTitle: "Weekly screen time (in hours)",
+                submitButton: "Submit",
+                inputPlaceholder: "Hours",
+                emptyInputWarning: "Please enter your weekly screen time!",
+                negativeInputError: "Screen time cannot be negative. Please enter a valid number.",
+                greatJobScreenTime: "<strong>Great job!</strong> You're managing your time well. 👍<br>✅ Keep up healthy screen habits.<br>✅ Stretch every hour.",
+                bitTooMuchScreenTime: "<strong>A bit too much screen time.</strong> ⏳<br>✅ Try taking breaks every 30 minutes.<br>✅ Consider screen-free hobbies.",
+                warningTooMuchScreenTime: "<strong>Warning! Too much screen time.</strong> ⚠️<br>❗ Reduce digital usage.<br>❗ Go outside and rest your eyes.",
+                mentalWellnessSwitch: "Mental Wellness",
+                aiFakesSwitch: "AI Fakes",
+                mentalWellnessTitle: "Mental Wellness Online",
+                mentalHealthTips: [
+                    "Limit social media intake",
+                    "Curate a positive feed",
+                    "Take digital detox breaks",
+                    "Connect meaningfully online and offline",
+                    "Be mindful of cyberbullying and report it"
+                ],
+                aiDetectionTitle: "Spotting AI Fakes",
+                aiDetectionTips: [
+                    "Look for unnatural details (e.g., hands, eyes, teeth)",
+                    "Check for inconsistent lighting, shadows, and reflections",
+                    "Use reverse image search (e.g., Google Images)",
+                    "Examine the source and author's credibility",
+                    "Beware of overly smooth or waxy skin, odd textures"
+                ]
+            }
+        };
+
+        function setActiveLangButton(activeBtn) {
+            document.querySelectorAll('.lang-button').forEach(button => button.classList.remove('active'));
             activeBtn.classList.add('active');
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set Hungarian button as active by default
-            const huButton = document.querySelector('.lang-button[onclick*="\'hu\'"]');
-            if (huButton) {
-                huButton.classList.add('active');
+        function populateList(ulId, items) {
+            const ul = document.getElementById(ulId);
+            ul.innerHTML = ''; // Clear existing items
+            items.forEach(itemText => {
+                const li = document.createElement('li');
+                li.textContent = itemText;
+                ul.appendChild(li);
+            });
+        }
+        
+        function switchInfoContent(contentType, clickedButton) {
+            currentInfoContentType = contentType;
+            document.querySelectorAll('.switcher-button').forEach(btn => btn.classList.remove('active'));
+            clickedButton.classList.add('active');
+
+            document.querySelectorAll('.info-content-panel').forEach(panel => panel.classList.remove('active'));
+            
+            const titleElement = document.getElementById('interactiveContentTitle');
+            if (contentType === 'mentalHealth') {
+                document.getElementById('mentalHealthContent').classList.add('active');
+                titleElement.innerText = translations[currentLang].mentalWellnessTitle;
+            } else { // aiDetection
+                document.getElementById('aiDetectionContent').classList.add('active');
+                titleElement.innerText = translations[currentLang].aiDetectionTitle;
             }
-            setLanguage(currentLang); // Initialize with default language
-        });
+        }
 
         function setLanguage(lang) {
             currentLang = lang;
             document.documentElement.lang = lang;
+            const t = translations[lang];
 
-            document.getElementById('in').innerText =
-                lang === 'en' ? "General internet tips" : "Általános internetes tippek";
-            document.getElementById('mobileTitle').innerText =
-                lang === 'en' ? "Health tips for mobile phone usage" : "Egészségügyi tippek mobiltelefonhoz";
-            document.getElementById('computerTitle').innerText =
-                lang === 'en' ? "Health tips for computer usage" : "Egészségügyi tippek számítógéphez";
-            document.getElementById('usageTitle').innerText =
-                lang === 'en' ? "Weekly screen time (in hours)" : "Heti képernyőhasználat (órákban)";
-            document.getElementById('submitBtn').innerText =
-                lang === 'en' ? "Submit" : "Küldés";
+            document.getElementById('in').innerText = t.generalTips;
+            document.getElementById('mobileTitle').innerText = t.mobileHealthTitle;
+            populateList('mobileTips', t.mobileTips);
+            document.getElementById('computerTitle').innerText = t.computerHealthTitle;
+            populateList('computerTips', t.computerTips);
             
-            const screenUsageInput = document.getElementById('screenUsage');
-            screenUsageInput.placeholder = lang === 'en' ? "Hours" : "Órákban";
+            document.getElementById('usageTitle').innerText = t.screenUsageTitle;
+            document.getElementById('submitBtn').innerText = t.submitButton;
+            document.getElementById('screenUsage').placeholder = t.inputPlaceholder;
 
-            document.getElementById('mobileTips').innerHTML =
-                lang === 'en'
-                    ? `<li>Maintain good posture</li>
-                       <li>Limit your screen time</li>
-                       <li>Don’t hold the phone too close to your eyes</li>
-                       <li>Adjust screen brightness appropriately</li>
-                       <li>Use a blue light filter</li>`
-                    : `<li>Helyes testtartás</li>
-                       <li>Ügyelj arra, hogy ne tölts túl sok időt a képernyő előtt</li>
-                       <li>Ne tartsd túl közel a szemedhez</li>
-                       <li>Állítsd be a fényerőt megfelelően</li>
-                       <li>Használj kékfény szűrőt</li>`;
+            // New interactive content box translations
+            document.getElementById('mentalHealthSwitchBtn').innerText = t.mentalWellnessSwitch;
+            document.getElementById('aiDetectionSwitchBtn').innerText = t.aiFakesSwitch;
+            
+            populateList('mentalHealthTipsList', t.mentalHealthTips);
+            populateList('aiDetectionTipsList', t.aiDetectionTips);
+            
+            // Update the title of the interactive box based on the currently active tab
+            if (currentInfoContentType === 'mentalHealth') {
+                document.getElementById('interactiveContentTitle').innerText = t.mentalWellnessTitle;
+            } else {
+                document.getElementById('interactiveContentTitle').innerText = t.aiDetectionTitle;
+            }
 
-            document.getElementById('computerTips').innerHTML =
-                lang === 'en'
-                    ? `<li>Maintain good posture</li>
-                       <li>Don't spend too much time in front of the screen</li>
-                       <li>The top of your monitor should be at eye level</li>
-                       <li>Rest your hands when not using the mouse or keyboard</li>
-                       <li>Take regular short breaks</li>`
-                    : `<li>Helyes testtartás</li>
-                       <li>Ne tölts túl sok időt a képernyő előtt</li>
-                       <li>A monitor felső része legyen szemmagasságban</li>
-                       <li>Pihentesd a kezed, amikor nem használod</li>
-                       <li>Rendszeres, rövid szünetek tartása</li>`;
-
+            // Re-evaluate screen time message if it was visible
             const valaszDiv = document.getElementById('valasz');
-            const screenUsageValue = document.getElementById("screenUsage").value;
-            if (valaszDiv.innerHTML !== "" && valaszDiv.style.display !== 'none') { // if a message is visible
-                if (screenUsageValue !== "") {
+            if (valaszDiv.style.display !== 'none' && valaszDiv.innerHTML !== "") {
+                 if (document.getElementById("screenUsage").value !== "") {
                     submitScreenUsage(); 
                 } else {
-                     // If there was no input, clear the old message potentially left in a different language
-                    valaszDiv.innerHTML = "";
+                    // If no input, but message was visible, re-translate generic empty warning.
+                    // Or clear it if that's preferred. For now, clear it.
+                    valaszDiv.innerHTML = ""; 
                     valaszDiv.style.display = 'none';
                 }
             }
         }
 
+        document.addEventListener('DOMContentLoaded', function() {
+            const huButton = document.querySelector('.lang-button[onclick*="\'hu\'"]');
+            if (huButton) setActiveLangButton(huButton);
+            
+            // Initialize the first info content tab (Mental Health)
+            const mentalHealthSwitch = document.getElementById('mentalHealthSwitchBtn');
+            if(mentalHealthSwitch) switchInfoContent('mentalHealth', mentalHealthSwitch)
+
+            setLanguage(currentLang); // Initialize with default language and populate all content
+        });
+
         function submitScreenUsage() {
             const screenUsageInput = document.getElementById("screenUsage");
             const screenUsage = screenUsageInput.value;
             const responseDiv = document.getElementById("valasz");
-            responseDiv.style.display = 'block'; // Make it visible
-            responseDiv.className = 'response-message'; // Reset classes
+            responseDiv.style.display = 'block'; 
+            responseDiv.className = 'response-message'; 
+            const t = translations[currentLang];
 
             if (screenUsage === "") {
-                responseDiv.innerHTML =
-                    currentLang === "en"
-                        ? "Please enter your weekly screen time!"
-                        : "Kérjük, adja meg a képernyőhasználatot!";
+                responseDiv.innerHTML = t.emptyInputWarning;
                 responseDiv.classList.add('warning');
             } else {
                 const usageHours = parseInt(screenUsage);
                 let responseMessage;
 
                 if (usageHours < 0) {
-                    responseMessage =
-                        currentLang === "en"
-                            ? "Screen time cannot be negative. Please enter a valid number."
-                            : "A képernyőidő nem lehet negatív. Kérjük, adjon meg érvényes számot.";
+                    responseMessage = t.negativeInputError;
                     responseDiv.classList.add('error');
                 } else if (usageHours < 10) {
-                    responseMessage =
-                        currentLang === "en"
-                            ? "<strong>Great job!</strong> You're managing your time well. 👍<br>✅ Keep up healthy screen habits.<br>✅ Stretch every hour."
-                            : "<strong>Jó munkát végeztél!</strong> Jól osztod be az idődet. 👍<br>✅ Tartsd meg az egészséges képernyőszokásokat.<br>✅ Nyújtózz óránként.";
+                    responseMessage = t.greatJobScreenTime;
                     responseDiv.classList.add('success');
                 } else if (usageHours >= 10 && usageHours <= 20) {
-                    responseMessage =
-                        currentLang === "en"
-                            ? "<strong>A bit too much screen time.</strong> ⏳<br>✅ Try taking breaks every 30 minutes.<br>✅ Consider screen-free hobbies."
-                            : "<strong>Kicsit sok a képernyőidő.</strong> ⏳<br>✅ Próbálj 30 percenként szünetet tartani.<br>✅ Keress képernyőmentes hobbikat.";
+                    responseMessage = t.bitTooMuchScreenTime;
                     responseDiv.classList.add('warning');
-                } else { // usageHours > 20
-                    responseMessage =
-                        currentLang === "en"
-                            ? "<strong>Warning! Too much screen time.</strong> ⚠️<br>❗ Reduce digital usage.<br>❗ Go outside and rest your eyes."
-                            : "<strong>Figyelem! Túl sok időt töltesz a képernyő előtt.</strong> ⚠️<br>❗ Csökkentsd a digitális időt.<br>❗ Menj ki a szabadba, pihentesd a szemed.";
+                } else { 
+                    responseMessage = t.warningTooMuchScreenTime;
                     responseDiv.classList.add('error');
                 }
                 responseDiv.innerHTML = responseMessage;
