@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Reset and Basic Styling */
+       
         * {
             margin: 0;
             padding: 0;
@@ -29,7 +29,7 @@
             padding: 20px;
         }
 
-        /* Header Styling */
+      
         .site-header { 
             background-image: linear-gradient(135deg, #4A90E2 0%, #2C6DAA 100%); 
             color: white;
@@ -59,9 +59,9 @@
         }
 
         .lang-button { 
-            background-image: linear-gradient(315deg, #4A90E2 0%, #2C6DAA 100%); /* Corrected: background-image */
+            background-image: linear-gradient(315deg, #4A90E2 0%, #2C6DAA 100%); 
             border: 2px solid white;
-            color: white; /* Changed to white for better contrast on gradient */
+            color: white;
             padding: 10px 20px;
             text-align: center;
             text-decoration: none;
@@ -75,12 +75,12 @@
         }
 
         .lang-button:hover, .lang-button.active {
-            background-image: none; /* Remove gradient on active/hover */
+            background-image: none; 
             background-color: white;
             color: #4A90E2;
         }
 
-        /* Main Content Area */
+    
         .content-sections {
             display: flex;
             flex-wrap: wrap; 
@@ -96,8 +96,8 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             flex: 1; 
             min-width: 280px; 
-            display: flex; /* Added for internal flex structuring */
-            flex-direction: column; /* Ensure children stack vertically */
+            display: flex; 
+            flex-direction: column;
         }
 
         .content-box h2 {
@@ -127,12 +127,12 @@
             font-weight: bold;
         }
 
-        /* Interactive Content Box Styling */
+        
         .interactive-box-header {
             margin-bottom: 20px;
         }
-        .interactive-box-header h2 { /* Already styled by .content-box h2 */
-            margin-bottom: 10px; /* Adjust spacing if needed */
+        .interactive-box-header h2 { 
+            margin-bottom: 10px;
         }
 
         .switcher-buttons {
@@ -144,7 +144,7 @@
         }
 
         .switcher-button {
-            flex-grow: 1; /* Make buttons take equal space */
+            flex-grow: 1; 
             background-color: #f0f0f0;
             border: 1px solid #ddd;
             color: #555;
@@ -168,15 +168,15 @@
         }
 
         .info-content-panel {
-            display: none; /* Hidden by default */
+            display: none; 
         }
 
         .info-content-panel.active {
-            display: block; /* Shown when active */
+            display: block; 
         }
 
 
-        /* Screen Time Section */
+      
         .screentime-section {
             background-color: white;
             border-radius: 8px;
@@ -248,7 +248,7 @@
             border-left-color: #e74c3c; 
         }
 
-        /* Responsive adjustments */
+      
         @media (max-width: 768px) {
             .site-header h1 {
                 font-size: 2.5em;
@@ -263,7 +263,7 @@
                 max-width: 100%; 
             }
             .switcher-buttons {
-                flex-direction: column; /* Stack switcher buttons on small screens */
+                flex-direction: column;
             }
         }
 
@@ -328,9 +328,9 @@
 
     <script>
         let currentLang = 'hu'; 
-        let currentInfoContentType = 'mentalHealth'; // To track active tab in the new box
+        let currentInfoContentType = 'mentalHealth'; 
 
-        // Translations object
+        
         const translations = {
             hu: {
                 generalTips: "Általános internetes tippek",
@@ -431,7 +431,7 @@
 
         function populateList(ulId, items) {
             const ul = document.getElementById(ulId);
-            ul.innerHTML = ''; // Clear existing items
+            ul.innerHTML = ''; 
             items.forEach(itemText => {
                 const li = document.createElement('li');
                 li.textContent = itemText;
@@ -450,7 +450,7 @@
             if (contentType === 'mentalHealth') {
                 document.getElementById('mentalHealthContent').classList.add('active');
                 titleElement.innerText = translations[currentLang].mentalWellnessTitle;
-            } else { // aiDetection
+            } else { 
                 document.getElementById('aiDetectionContent').classList.add('active');
                 titleElement.innerText = translations[currentLang].aiDetectionTitle;
             }
@@ -471,28 +471,27 @@
             document.getElementById('submitBtn').innerText = t.submitButton;
             document.getElementById('screenUsage').placeholder = t.inputPlaceholder;
 
-            // New interactive content box translations
+          
             document.getElementById('mentalHealthSwitchBtn').innerText = t.mentalWellnessSwitch;
             document.getElementById('aiDetectionSwitchBtn').innerText = t.aiFakesSwitch;
             
             populateList('mentalHealthTipsList', t.mentalHealthTips);
             populateList('aiDetectionTipsList', t.aiDetectionTips);
             
-            // Update the title of the interactive box based on the currently active tab
+            
             if (currentInfoContentType === 'mentalHealth') {
                 document.getElementById('interactiveContentTitle').innerText = t.mentalWellnessTitle;
             } else {
                 document.getElementById('interactiveContentTitle').innerText = t.aiDetectionTitle;
             }
 
-            // Re-evaluate screen time message if it was visible
+          
             const valaszDiv = document.getElementById('valasz');
             if (valaszDiv.style.display !== 'none' && valaszDiv.innerHTML !== "") {
                  if (document.getElementById("screenUsage").value !== "") {
                     submitScreenUsage(); 
                 } else {
-                    // If no input, but message was visible, re-translate generic empty warning.
-                    // Or clear it if that's preferred. For now, clear it.
+                 
                     valaszDiv.innerHTML = ""; 
                     valaszDiv.style.display = 'none';
                 }
@@ -503,11 +502,11 @@
             const huButton = document.querySelector('.lang-button[onclick*="\'hu\'"]');
             if (huButton) setActiveLangButton(huButton);
             
-            // Initialize the first info content tab (Mental Health)
+           
             const mentalHealthSwitch = document.getElementById('mentalHealthSwitchBtn');
             if(mentalHealthSwitch) switchInfoContent('mentalHealth', mentalHealthSwitch)
 
-            setLanguage(currentLang); // Initialize with default language and populate all content
+            setLanguage(currentLang);
         });
 
         function submitScreenUsage() {
