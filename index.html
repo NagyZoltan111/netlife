@@ -528,10 +528,10 @@
                 if (usageHours < 0) {
                     responseMessage = t.negativeInputError;
                     responseDiv.classList.add('error');
-                } else if (usageHours < 10) {
+                } else if (usageHours < 24) {
                     responseMessage = t.greatJobScreenTime;
                     responseDiv.classList.add('success');
-                } else if (usageHours >= 10 && usageHours <= 20) {
+                } else if (usageHours >= 45 && usageHours <= 168) {
                     responseMessage = t.bitTooMuchScreenTime;
                     responseDiv.classList.add('warning');
                 } else { 
